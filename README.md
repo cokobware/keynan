@@ -36,6 +36,7 @@ In short, you implement a concrete version of the object `BaseConfigurationGroup
 
 
 # The future
+* NuGet package
 * A .NET Core version 
 * Versioning of Configuration Groups within an application's life.
 * Persistence of configuration information.

@@ -4,25 +4,36 @@
     using Keynan.Configuration.Settings;
     using System.Collections.Generic;
 
+    // Use a unique GUID to help differentiate this group from other groups.
+    // You don't have to use this approach below. You can just assign it directly 
+    // to the ID propertly of the Configuration Group implementation.
     public static partial class ExampleGroups
     {
-        // use a unique GUID to help differentiate this group
         public static string ExampleConfigGroupID => "6F42CC17-FA23-4EF8-88D6-1C8AB6C96BD3"; 
     }
 
+    // Our
     public class ExampleConfigGroup : BaseConfigurationGroup<ExampleConfigGroup>
     {
-        // Settings
+        // Settings as properties for the Configuration Group
         public FeatureASetting FeatureA { get; set; }
         public HowManyVideosSetting HowManyVideos { get; set; }
         public PickOneSetting PickOne { get; set; }
         public PickAnotherSetting PickAnother { get; set; }
         public EmailContactSetting EmailContact { get; set; }
 
+        // Friendly group name, localized
         public new string Name => ExampleConfigurationGroupResource.Group_Name;
+
+        // Friendly group description, localized
         public new string Description => ExampleConfigurationGroupResource.Group_Description;
+
+        // A unique identifier for the group in your application. A guid works well,
+        // however any unique string to your application will do.
         public new string ID => ExampleGroups.ExampleConfigGroupID;
 
+        // Initializes the defined group Settings and assigns them 
+        // to the group's properties.
         public override void SetupConfigGroup()
         {
             FeatureA = new FeatureASetting();
@@ -32,7 +43,8 @@
             EmailContact = new EmailContactSetting();
         }
 
-        // Methods
+        // Sets the sort order for the Settings in the Configuration Group,
+        // which can be used when displaying the Settings in an interface
         public override void SetOrder()
         {
             FeatureA.Order = 10;
@@ -42,14 +54,15 @@
             EmailContact.Order = 5;
         }
 
+
+        // Assign values from the deserialized result into their respective properties
         public override void AssignProperties()
         {
-            // Assign all properties 
-            this.FeatureA.Value = _deserializedResult.FeatureA.Value;
-            this.HowManyVideos.Value = _deserializedResult.HowManyVideos.Value;
-            this.PickOne.Value = _deserializedResult.PickOne.Value;
-            this.PickAnother.Value = _deserializedResult.PickAnother.Value;
-            this.EmailContact.Value = _deserializedResult.EmailContact.Value;
+            FeatureA.Value = _deserializedResult.FeatureA.Value;
+            HowManyVideos.Value = _deserializedResult.HowManyVideos.Value;
+            PickOne.Value = _deserializedResult.PickOne.Value;
+            PickAnother.Value = _deserializedResult.PickAnother.Value;
+            EmailContact.Value = _deserializedResult.EmailContact.Value;
         }
     }
 

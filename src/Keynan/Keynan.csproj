@@ -11,8 +11,8 @@
     <RepositoryType>Git</RepositoryType>
     <Company />
     <Authors>Cory Koski</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Copyright>Cory Koski 2020</Copyright>
     <Description>A strongly-typed configuration management library for .NET projects</Description>
